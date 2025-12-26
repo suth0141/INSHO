@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>INSHO — Free Websites for Small Businesses (with optional custom domains)</title>
+  <meta name="description" content="INSHO gives small businesses a free, professional website hosted on GitHub Pages with a subdomain like nails.insho.ca. Upgrade anytime to your own domain, SEO, and growth features." />
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1a33;
+      --muted:#9bb0d1;
+      --text:#eaf0ff;
+      --brand:#6ea8ff;
+      --brand2:#72f2c7;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1120px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 20% -10%, rgba(110,168,255,.25), transparent 55%),
+                  radial-gradient(900px 500px at 90% 0%, rgba(114,242,199,.18), transparent 50%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px;}
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.70);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      max-width:var(--max); margin:0 auto; padding:14px 24px;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; text-decoration:none;
+      font-weight:800; letter-spacing:.5px;
+      white-space:nowrap;
+    }
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: var(--shadow);
+    }
+    .nav-links{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+    .nav-links a{
+      text-decoration:none; color:var(--muted); font-weight:700; font-size:14px;
+      padding:8px 10px; border-radius:12px;
+    }
+    .nav-links a:hover{color:var(--text); background:rgba(255,255,255,.06)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      text-decoration:none;
+      font-weight:800;
+      gap:10px;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+    .btn:hover{background: rgba(255,255,255,.10)}
+    .btn.primary{
+      border:none;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      color:#061021;
+      box-shadow: 0 12px 35px rgba(110,168,255,.18);
+    }
+    .btn.primary:hover{filter:saturate(1.05) brightness(1.02)}
+    .hero{
+      padding:54px 0 26px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr; padding-top:34px}
+      .nav-links a.hide-sm{display:none}
+    }
+    .card{
+      background: rgba(15,26,51,.72);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero-left{padding:30px}
+    .kicker{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:6px 10px; border-radius:999px;
+      border:1px solid var(--border);
+      color: var(--muted);
+      font-weight:800; font-size:13px;
+      background: rgba(255,255,255,.04);
+    }
+    .dot{
+      width:8px; height:8px; border-radius:999px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+    }
+    h1{
+      margin:16px 0 10px;
+      font-size: clamp(34px, 4vw, 54px);
+      line-height:1.05;
+      letter-spacing:-.02em;
+    }
+    .sub{
+      color:var(--muted);
+      font-size: 17px;
+      max-width: 62ch;
+      margin: 0 0 18px;
+    }
+    .cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:16px}
+    .fine{
+      margin-top:14px;
+      color: rgba(234,240,255,.70);
+      font-size: 13px;
+    }
+    .hero-right{padding:18px; display:flex; flex-direction:column; gap:12px}
+    .stat{
+      padding:16px;
+      border-radius: 16px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+    }
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      color: var(--muted);
+      background: rgba(255,255,255,.03);
+      font-weight:800;
+    }
+    .codepill{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 10px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: rgba(234,240,255,.9);
+      display:inline-block;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:16px;
+    }
+    @media (max-width: 900px){ .grid{grid-template-columns:1fr} }
+    section{padding:30px 0}
+    h2{
+      margin:0 0 8px;
+      font-size: 26px;
+      letter-spacing:-.01em;
+    }
+    .muted{color:var(--muted)}
+    .feature{
+      padding:18px;
+      border-radius: var(--radius);
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+    }
+    .feature h3{margin:8px 0 6px; font-size:17px}
+    .steps{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:16px;
+    }
+    @media (max-width: 900px){ .steps{grid-template-columns:1fr} }
+    .step{
+      padding:18px;
+      border-radius: var(--radius);
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+    }
+    .num{
+      width:34px;height:34px;border-radius:12px;
+      display:grid;place-items:center;
+      background: rgba(110,168,255,.16);
+      border: 1px solid rgba(110,168,255,.35);
+      color: var(--text);
+      font-weight:900;
+      margin-bottom:10px;
+    }
+    .pricing{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:16px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){ .pricing{grid-template-columns:1fr} }
+    .price-card{
+      padding:18px;
+      border-radius: var(--radius);
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      display:flex; flex-direction:column; gap:12px;
+    }
+    .price-card.popular{
+      background: linear-gradient(180deg, rgba(110,168,255,.18), rgba(255,255,255,.04));
+      border-color: rgba(110,168,255,.35);
+    }
+    .money{
+      font-size:34px; font-weight:950;
+      letter-spacing:-.03em;
+    }
+    ul{margin:0; padding-left:18px; color: rgba(234,240,255,.85)}
+    li{margin:8px 0}
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+    }
+    @media (max-width: 900px){ .row{grid-template-columns:1fr} }
+    .form{
+      padding:18px;
+      border-radius: var(--radius);
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+    }
+    label{display:block; font-size:13px; color:rgba(234,240,255,.8); margin:10px 0 6px; font-weight:800}
+    input, textarea, select{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(11,18,32,.55);
+      color: var(--text);
+      outline: none;
+    }
+    textarea{min-height:120px; resize:vertical}
+    input:focus, textarea:focus, select:focus{border-color: rgba(110,168,255,.55)}
+    .helper{
+      font-size:12px;
+      color: rgba(234,240,255,.65);
+      margin-top:6px;
+    }
+    .footer{
+      padding:26px 0 40px;
+      color: rgba(234,240,255,.65);
+      font-size:13px;
+      border-top:1px solid var(--border);
+      margin-top:18px;
+    }
+    .split{
+      display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+    }
+    .small-links{display:flex; gap:12px; flex-wrap:wrap}
+    .small-links a{color: rgba(234,240,255,.65); text-decoration:none; font-weight:700}
+    .small-links a:hover{color: var(--text)}
+    .callout{
+      margin-top:14px;
+      padding:14px;
+      border-radius:16px;
+      border:1px solid rgba(114,242,199,.30);
+      background: rgba(114,242,199,.08);
+      color: rgba(234,240,255,.92);
+    }
+    .badges{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+  </style>
+</head>
+
+<body>
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top" aria-label="INSHO home">
+      <span class="logo" aria-hidden="true"></span>
+      <span>INSHO</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a class="hide-sm" href="#offer">Free Website</a>
+      <a class="hide-sm" href="#services">Services</a>
+      <a class="hide-sm" href="#how">How it works</a>
+      <a class="hide-sm" href="#pricing">Pricing</a>
+      <a href="#contact" class="btn">Contact</a>
+      <a href="#contact" class="btn primary">Get your free site</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+  <section class="hero">
+    <div class="card hero-left">
+      <span class="kicker"><span class="dot"></span> Free website + INSHO subdomain included</span>
+      <h1>Your business online—today. <br/>Free website, hosted for you.</h1>
+      <p class="sub">
+        INSHO builds small businesses a clean, mobile-friendly website and hosts it on GitHub Pages.
+        No domain? No problem—get a professional subdomain like <span class="codepill">nails.insho.ca</span>.
+      </p>
+
+      <div class="badges" aria-label="Highlights">
+        <span class="pill">⚡ Fast setup</span>
+        <span class="pill">📱 Mobile-first</span>
+        <span class="pill">🔎 SEO-ready basics</span>
+        <span class="pill">🆓 Free hosting</span>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn primary" href="#contact">Claim your subdomain</a>
+        <a class="btn" href="#offer">How the free plan works</a>
+        <a class="btn" href="#pricing">Upgrades</a>
+      </div>
+
+      <div class="fine">
+        You can upgrade later to your own custom domain (e.g., <span class="codepill">yourbusiness.com</span>) and advanced features.
+      </div>
+    </div>
+
+    <aside class="card hero-right" aria-label="What’s included">
+      <div class="stat">
+        <div class="pill">🌐 Example</div>
+        <p class="muted" style="margin:10px 0 0;">
+          Your site can look like: <b>nails.insho.ca</b>, <b>bakery.insho.ca</b>, <b>plumbing.insho.ca</b>.
+        </p>
+      </div>
+
+      <div class="stat">
+        <div class="pill">✅ Included (free)</div>
+        <p class="muted" style="margin:10px 0 0;">
+          A one-page site with your services, hours, location/service area, photos, and a contact button.
+        </p>
+      </div>
+
+      <div class="stat">
+        <div class="pill">🚀 Optional upgrades</div>
+        <p class="muted" style="margin:10px 0 0;">
+          Custom domain setup, multi-page sites, booking links, lead capture, and local search optimization.
+        </p>
+      </div>
+    </aside>
+  </section>
+
+  <section id="offer">
+    <h2>The Free Website Offer</h2>
+    <p class="muted">
+      This is the “get online fast” plan: we build your site, host it for free, and give you a clean INSHO subdomain.
+    </p>
+
+    <div class="grid" style="margin-top:14px;">
+      <div class="feature">
+        <span class="pill">🆓 Hosted on GitHub Pages</span>
+        <h3>Reliable, fast static hosting</h3>
+        <p class="muted">Your website is deployed as a static site for speed and simplicity.</p>
+      </div>
+
+      <div class="feature">
+        <span class="pill">🏷️ Subdomain included</span>
+        <h3>Use a professional INSHO subdomain</h3>
+        <p class="muted">No domain? Get <span class="codepill">yourname.insho.ca</span> so customers can find you today.</p>
+      </div>
+
+      <div class="feature">
+        <span class="pill">🔁 Upgrade anytime</span>
+        <h3>Bring your own domain later</h3>
+        <p class="muted">When you’re ready, we can connect <span class="codepill">yourbusiness.com</span> and expand the site.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <b>What you’ll need to provide:</b> business name, services, service area (or address), hours, phone/email, and 3–10 photos (optional but recommended).
+    </div>
+  </section>
+
+  <section id="services">
+    <h2>Services</h2>
+    <p class="muted">Start free. Add power when you need it.</p>
+
+    <div class="grid" style="margin-top:14px;">
+      <div class="feature">
+        <span class="pill">🧩 Website Build</span>
+        <h3>Landing pages that convert</h3>
+        <p class="muted">Clear layout, strong calls-to-action, and a design that doesn’t look like it time-traveled from 2009.</p>
+      </div>
+
+      <div class="feature">
+        <span class="pill">📍 Local Presence</span>
+        <h3>Google Business Profile help</h3>
+        <p class="muted">Setup/cleanup so customers can find you on Maps and search.</p>
+      </div>
+
+      <div class="feature">
+        <span class="pill">🔎 SEO Foundations</span>
+        <h3>Search-friendly basics</h3>
+        <p class="muted">Metadata, performance, accessibility, and on-page SEO essentials.</p>
+      </div>
+
+      <div class="feature">
+        <span class="pill">📅 Booking & Links</span>
+        <h3>Make it easy to book you</h3>
+        <p class="muted">Appointment links, contact buttons, and click-to-call/click-to-email.</p>
+      </div>
+
+      <div class="feature">
+        <span class="pill">⚙️ Automation</span>
+        <h3>Simple lead capture</h3>
+        <p class="muted">Forms, notifications, and light CRM integration (optional).</p>
+      </div>
+
+      <div class="feature">
+        <span class="pill">🛠 Support</span>
+        <h3>Maintenance & edits</h3>
+        <p class="muted">Content updates and improvements when your business changes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <h2>How it works</h2>
+    <p class="muted">A simple process that respects your time (and your sanity).</p>
+
+    <div class="steps" style="margin-top:14px;">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Choose a subdomain</h3>
+        <p class="muted">Pick something short and memorable (e.g., <span class="codepill">nails.insho.ca</span>).</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Send your info</h3>
+        <p class="muted">Services, hours, location/service area, contact details, photos.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>We build + you approve</h3>
+        <p class="muted">We draft the site, you review. Two revision rounds included.</p>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <h3>Launch</h3>
+        <p class="muted">Your site goes live on GitHub Pages. Share it everywhere.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <h2>Pricing</h2>
+    <p class="muted">Free gets you online. Upgrades get you growing.</p>
+
+    <div class="pricing" style="margin-top:14px;">
+      <div class="price-card">
+        <div class="pill">Free</div>
+        <div class="money">$0</div>
+        <div class="muted">Perfect for getting online immediately.</div>
+        <ul>
+          <li>One-page website</li>
+          <li>Hosted on GitHub Pages</li>
+          <li>INSHO subdomain (e.g., <span class="codepill">nails.insho.ca</span>)</li>
+          <li>Click-to-call / click-to-email</li>
+          <li>Basic SEO foundations</li>
+        </ul>
+        <div class="helper">Note: This is a static website (fast + simple). Advanced features can be added via upgrades.</div>
+        <div style="margin-top:auto;">
+          <a class="btn primary" href="#contact">Get the free site</a>
+        </div>
+      </div>
+
+      <div class="price-card popular">
+        <div class="pill">Most Popular</div>
+        <div class="money">$999+</div>
+        <div class="muted">For businesses that want a stronger presence.</div>
+        <ul>
+          <li>Up to 5 pages</li>
+          <li>Custom domain setup (if you have one)</li>
+          <li>Google Business Profile setup/cleanup</li>
+          <li>Analytics + SEO checklist</li>
+          <li>1 month support</li>
+        </ul>
+        <div style="margin-top:auto;">
+          <a class="btn primary" href="#contact">Talk about this plan</a>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <div class="pill">Growth</div>
+        <div class="money">$1,999+</div>
+        <div class="muted">For lead-gen and scaling.</div>
+        <ul>
+          <li>Up to 10 pages + landing pages</li>
+          <li>Lead capture + automation</li>
+          <li>Copy polish + conversion improvements</li>
+          <li>3 months support</li>
+        </ul>
+        <div style="margin-top:auto;">
+          <a class="btn" href="#contact">Ask about Growth</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact INSHO</h2>
+    <p class="muted">Tell us your business, your subdomain idea, and what you want customers to do (call, book, visit, buy).</p>
+
+    <div class="row" style="margin-top:14px;">
+      <div class="form">
+        <h3 style="margin:0 0 6px;">Claim your free website</h3>
+        <p class="muted" style="margin:0 0 10px;">This form opens your email app with everything pre-filled.</p>
+
+        <form id="leadForm">
+          <label for="name">Name</label>
+          <input id="name" name="name" autocomplete="name" placeholder="Your name" required />
+
+          <label for="business">Business name</label>
+          <input id="business" name="business" placeholder="Your business name" required />
+
+          <label for="slug">Preferred subdomain</label>
+          <input id="slug" name="slug" placeholder="e.g., nails (for nails.insho.ca)" required />
+          <div class="helper">Use letters/numbers/hyphens. Keep it short.</div>
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="you@domain.com" required />
+
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" autocomplete="tel" placeholder="(optional)" />
+
+          <label for="website">Existing domain/website (if any)</label>
+          <input id="website" name="website" type="text" placeholder="yourbusiness.com or https://..." />
+
+          <label for="goal">Primary goal</label>
+          <select id="goal" name="goal">
+            <option value="more_calls">More calls / leads</option>
+            <option value="more_walkins">More walk-ins</option>
+            <option value="bookings">More bookings</option>
+            <option value="credibility">Look more professional</option>
+            <option value="other">Other</option>
+          </select>
+
+          <label for="message">Business details</label>
+          <textarea id="message" name="message" placeholder="Services, service area (or address), hours, and anything special you want on the site."></textarea>
+
+          <div class="cta-row" style="margin-top:12px;">
+            <button class="btn primary" type="submit">Send request</button>
+            <a class="btn" href="#pricing">Review upgrades</a>
+          </div>
+        </form>
+
+        <p class="fine">Replace the email below with your real business email in the code: <b>hello@insho.ca</b> (example).</p>
+      </div>
+
+      <div class="feature" style="padding:18px;">
+        <h3 style="margin:0 0 6px;">What happens next</h3>
+        <ul>
+          <li>We confirm your subdomain availability</li>
+          <li>We collect your content (or help you write it)</li>
+          <li>We draft the site and send you a preview link</li>
+          <li>We launch your site at <span class="codepill">yourname.insho.ca</span></li>
+        </ul>
+
+        <div style="margin-top:16px;">
+          <div class="pill">📧 Email</div>
+          <p class="muted" style="margin:10px 0 0;">
+            Prefer email? Write to <b>hello@insho.ca</b> (update this).
+          </p>
+        </div>
+
+        <div style="margin-top:16px;">
+          <div class="pill">📌 Tip</div>
+          <p class="muted" style="margin:10px 0 0;">
+            The fastest launches happen when you send a few photos (logo, storefront, work samples).
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="split">
+      <div>© <span id="year"></span> INSHO. Free websites for small businesses.</div>
+      <div class="small-links">
+        <a href="#offer">Free Website</a>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const form = document.getElementById("leadForm");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const data = new FormData(form);
+    const name = data.get("name");
+    const business = data.get("business");
+    const slug = (data.get("slug") || "").toString().trim().toLowerCase();
+    const email = data.get("email");
+    const phone = data.get("phone") || "(not provided)";
+    const website = data.get("website") || "(none)";
+    const goal = data.get("goal");
+    const message = data.get("message") || "(no extra details)";
+
+    const safeSlug = slug
+      .replace(/\s+/g, "-")
+      .replace(/[^a-z0-9-]/g, "")
+      .replace(/-+/g, "-")
+      .replace(/^-|-$/g, "");
+
+    // TODO: change this to your real INSHO email:
+    const to = "hello@insho.ca";
+
+    const subject = encodeURIComponent(`INSHO: Free Website Request — ${business}`);
+    const body = encodeURIComponent(
+`Name: ${name}
+Business: ${business}
+Email: ${email}
+Phone: ${phone}
+
+Preferred subdomain: ${safeSlug || "(missing)"}${safeSlug ? `.insho.ca` : ""}
+Existing domain/website: ${website}
+Goal: ${goal}
+
+Business details:
+${message}
+
+---
+Sent from insho website form`
+    );
+
+    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+  });
+</script>
+</body>
+</html>
